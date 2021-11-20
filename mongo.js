@@ -21,7 +21,7 @@ const Person = mongoose.model('Person', noteSchema)
 
 const person = new Person({
   name: process.argv[3],
-  number: process.argv[4],}
+  number: process.argv[4] }
 )
 
 if (person.name && person.number) {
