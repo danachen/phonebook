@@ -4,29 +4,13 @@ const morgan = require('morgan')
 // const mongoose = require('mongoose')
 const app = express()
 const cors = require('cors')
-// const url = `mongodb+srv://didistar:fso@cluster0.zf84c.mongodb.net/phonebook?retryWrites=true`
 const Person = require ('./models/person')
 const { json } = require('express')
-// const url = process.env.MONGODB_URI
-// console.log('connecting to ', url)
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
-// const personSchema = new mongoose.Schema({
-//   name: String,
-//   phone: String,
-// })
-
-// const Person = mongoose.model('Person', personSchema)
-// mongoose.connect(url)
-//         .then(result => {
-//           console.log('connected to MongoDB')
-//         })
-//         .catch((error) => {
-//           console.log('error connecting to MongoDB: ', error.message)
-//         })
 
 app.use(express.json())
 // app.use(morgan('tiny'))
@@ -102,20 +86,6 @@ const nameDuplicate = (newName) => {
 }
 
 app.post('/api/persons', (request, response) => {
-  // const maxId = persons.length > 0 ? Math.max(...persons.map(person => person.id)) : 0
-  // const person = request.body
-
-  // if (nameDuplicate(person.name)) {
-  //   return response.status(400).json({ error: 'name must be unique' })
-  // } else if (!person.number) {
-  //   return response.status(400).json({ error: 'no number is entered'})
-  // } else {
-  //   person.id = maxId + 1
-  // }
-
-  // persons = persons.concat(person)
-  // response.json(person)
-
   const body = request.body
 
   if (!body.name) {
@@ -131,8 +101,3 @@ app.post('/api/persons', (request, response) => {
     response.json(savedPerson)
   })
 })
-
-// const PORT = process.env.PORT || 3001
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`)
-// })
